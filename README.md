@@ -4,67 +4,44 @@ A comprehensive CLI-based Clinic Management System built with Python, featuring 
 
 ## Features
 
-### 🏥 Core Features
+### Core Features
 
 #### Patient Management
 
-- ✅ **Registration & Authentication**: Secure patient registration with password hashing
-- ✅ **Profile Management**: View and edit personal information
-- ✅ **Appointment Booking**: Book appointments with available doctors
-- ✅ **Appointment Management**: View, reschedule, and cancel appointments
-- ✅ **Medical Records**: Secure access to personal medical history
-- ✅ **Prescription Management**: View active prescriptions
-- ✅ **Complaint System**: File complaints about service or medical care
-- ✅ **Doctor Rating**: Rate doctors after completing appointments
+- **Registration & Authentication**: Secure patient registration with password hashing
+- **Profile Management**: View and edit personal information
+- **Appointment Booking**: Book appointments with available doctors
+- **Appointment Management**: View, reschedule, and cancel appointments
+- **Medical Records**: Secure access to personal medical history
+- **Prescription Management**: View active prescriptions
+- **Complaint System**: File complaints about service or medical care
+- **Doctor Rating**: Rate doctors after completing appointments
 
 #### Doctor Management
 
-- ✅ **Registration & Authentication**: Doctor registration with credentials
-- ✅ **Profile Management**: Manage professional information and rates
-- ✅ **Schedule Management**: Set availability slots for appointments
-- ✅ **Appointment Management**: Confirm, reschedule, and complete appointments
-- ✅ **Patient Records**: Create and update medical records for assigned patients
-- ✅ **Prescription Issuance**: Issue prescriptions to patients
-- ✅ **Complaint Review**: View complaints filed against them
-- ✅ **Rating System**: Track patient ratings and average rating
+- **Registration & Authentication**: Doctor registration with credentials
+- **Profile Management**: Manage professional information and rates
+- **Schedule Management**: Set availability slots for appointments
+- **Appointment Management**: Confirm, reschedule, and complete appointments
+- **Patient Records**: Create and update medical records for assigned patients
+- **Prescription Issuance**: Issue prescriptions to patients
+- **Complaint Review**: View complaints filed against them
+- **Rating System**: Track patient ratings and average rating
 
 #### Admin Features
 
-- ✅ **Doctor Verification**: Approve or reject doctor registrations
-- ✅ **User Management**: View all registered patients and doctors
-- ✅ **Complaint Resolution**: Review and resolve filed complaints
-- ✅ **System Statistics**: View comprehensive system analytics
-- ✅ **Appointment Monitoring**: Track all appointments in the system
+- **Doctor Verification**: Approve or reject doctor registrations
+- **User Management**: View all registered patients and doctors
+- **Complaint Resolution**: Review and resolve filed complaints
+- **System Statistics**: View comprehensive system analytics
+- **Appointment Monitoring**: Track all appointments in the system
 
-### 🛡️ Security Features
+### Security Features
 
 - Password hashing with SHA-256 and salt
 - Session-based authentication
 - Role-based access control (Patient/Doctor/Admin)
 - Admin account with default credentials
-
-## Project Structure
-
-```
-Clinic-Management-System/
-├── main.py                      # Main application with CLI interface
-├── models.py                    # Data models (User, Patient, Doctor, etc.)
-├── auth.py                      # Authentication and password hashing
-├── database.py                  # Database management and persistence
-├── utils.py                     # Utility functions and helpers
-├── data/
-│   ├── patients.json            # Patient data storage
-│   ├── doctors.json             # Doctor data storage
-│   ├── appointments.json        # Appointment data
-│   ├── medical_records.json     # Medical records
-│   ├── complaints.json          # Complaints
-│   ├── prescriptions.json       # Prescriptions
-│   └── admin_users.json         # Admin credentials
-├── IMPLEMENTATION_PLAN.md       # Detailed implementation documentation
-└── README.md                    # This file
-```
-
-## Technical Architecture
 
 ### Technology Stack
 
@@ -74,26 +51,6 @@ Clinic-Management-System/
 - **OOP Features**: Class inheritance, encapsulation, polymorphism
 - **Data Structures**: Lists, Tuples, Dictionaries
 
-### Key Classes
-
-#### `User` (Base Class)
-
-- `Patient` - Extends User with patient-specific attributes
-- `Doctor` - Extends User with doctor-specific attributes
-
-#### Core Models
-
-- `Appointment` - Represents appointment between patient and doctor
-- `MedicalRecord` - Stores patient medical history and diagnoses
-- `Complaint` - Handles complaints from patients and doctors
-- `Prescription` - Represents medication prescriptions
-
-#### `Database`
-
-- Manages all CRUD operations
-- Handles JSON persistence
-- Provides query methods for filtering and searching
-
 ### Data Flow
 
 1. **User Input** → CLI Interface
@@ -101,37 +58,6 @@ Clinic-Management-System/
 3. **Processing** → Business logic in main.py
 4. **Storage** → Database class
 5. **Persistence** → JSON files
-
-## Installation & Setup
-
-### Prerequisites
-
-- Python 3.8 or higher
-- No external dependencies (uses only Python standard library)
-
-### Running the Application
-
-1. Navigate to the project directory:
-
-```bash
-cd Clinic-Management-System
-```
-
-2. Run the main application:
-
-```bash
-python main.py
-```
-
-3. You'll see the main menu with login and registration options
-
-## Usage Guide
-
-### First-Time Setup
-
-1. The system automatically creates a default admin account:
-   - **Username**: `admin`
-   - **Password**: `admin123`
 
 ### Patient Workflow
 
@@ -162,99 +88,6 @@ python main.py
 4. **Resolve Complaints** → Review and resolve filed complaints
 5. **Monitor System** → View statistics and reports
 6. **Change Password** → Update admin credentials
-
-## Data Models
-
-### Patient
-
-```python
-{
-    'user_id': str,
-    'username': str,
-    'email': str,
-    'phone': str,
-    'date_of_birth': 'YYYY-MM-DD',
-    'gender': 'Male|Female|Other',
-    'address': str,
-    'blood_type': 'O+|O-|A+|A-|B+|B-|AB+|AB-',
-    'allergies': str,
-    'emergency_contact': str,
-    'medical_history': [record_ids],
-    'appointments': [appointment_ids],
-    'height': int (cm),
-    'weight': int (kg)
-}
-```
-
-### Doctor
-
-```python
-{
-    'user_id': str,
-    'username': str,
-    'email': str,
-    'phone': str,
-    'specialization': str,
-    'license_number': str,
-    'experience_years': int,
-    'qualifications': str,
-    'verified': bool,
-    'available_slots': [(date, time), ...],
-    'assigned_patients': [patient_ids],
-    'consultation_fee': int,
-    'ratings': [1-5],
-    'average_rating': float
-}
-```
-
-### Appointment
-
-```python
-{
-    'appointment_id': str,
-    'patient_id': str,
-    'doctor_id': str,
-    'date': 'YYYY-MM-DD',
-    'time': 'HH:MM',
-    'reason': str,
-    'status': 'pending|confirmed|completed|cancelled',
-    'notes': str,
-    'created_at': 'YYYY-MM-DD HH:MM:SS'
-}
-```
-
-### Medical Record
-
-```python
-{
-    'record_id': str,
-    'patient_id': str,
-    'doctor_id': str,
-    'date_created': 'YYYY-MM-DD',
-    'diagnosis': str,
-    'prescription': str,
-    'test_results': str,
-    'notes': str,
-    'follow_up_date': 'YYYY-MM-DD'
-}
-```
-
-### Complaint
-
-```python
-{
-    'complaint_id': str,
-    'filed_by_type': 'patient|doctor',
-    'filed_by_id': str,
-    'against_id': str,
-    'complaint_type': 'Service|Medical|Staff|Billing|Other',
-    'description': str,
-    'date_filed': 'YYYY-MM-DD HH:MM:SS',
-    'status': 'pending|under_review|resolved',
-    'resolution': str,
-    'resolved_by': str
-}
-```
 
 ## Key Features & Implementation
 
@@ -422,35 +255,6 @@ Potential features for future development:
 9. Appointment reminder system
 10. Doctor availability calendar view
 
-## Troubleshooting
-
-### Data Not Persisting
-
-- Ensure the `data/` directory is created
-- Check file permissions for write access
-- Verify JSON file format is valid
-
-### Login Issues
-
-- Confirm username and password are correct
-- Check if account is verified (for doctors)
-- Ensure user account is active
-
-### Appointment Booking Issues
-
-- Verify doctor has available slots
-- Check appointment date is in the future
-- Ensure time is within clinic hours (09:00-18:00)
-
-## Code Structure & Best Practices
-
-### OOP Principles
-
-- **Encapsulation**: Private attributes with getter/setter methods
-- **Inheritance**: User base class extended by Patient and Doctor
-- **Polymorphism**: Common interface for different user types
-- **Abstraction**: Complex operations hidden in methods
-
 ### Python Features Used
 
 - Class definitions and inheritance
@@ -461,21 +265,9 @@ Potential features for future development:
 - File I/O with JSON module
 - Datetime operations
 
-### Code Quality
-
-- Clear variable naming
-- Comprehensive docstrings
-- Modular function design
-- DRY (Don't Repeat Yourself) principle
-- Consistent code formatting
-
-## License
-
-This project is created as an educational demonstration of Python programming concepts including OOP, dictionaries, lists, tuples, and file handling.
-
 ## Author
 
-Clinic Management System - Python Education Project
+Clinic Management System - © 2026 Jompe Emmanuel Ayomiposi.
 
 ---
 
