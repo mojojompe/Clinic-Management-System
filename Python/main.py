@@ -1,8 +1,3 @@
-"""
-Clinic Management System - Main Application
-CLI-based system with Patient, Doctor, and Admin dashboards
-"""
-
 import os
 import sys
 from datetime import datetime, timedelta
